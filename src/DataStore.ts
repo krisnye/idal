@@ -61,7 +61,7 @@ export interface DataStore<S extends DataSchema, T = Type<S>> {
 }
 
 let persons!: DataStore<typeof personSchema>;
-persons.watch({ select: ["name", "age", "map"], where: { "name": "foo", "age": { "<=": 12 } }, sort: { age: true }, offset: 10, count: 100 } as const, (results) => {
+persons.watch({ select: ["name", "age", "map"], where: { "name": "foo", "age": { "<=": 12 }, luckyNumbers: { "contains": 69 } }, sort: { age: true }, offset: 10, count: 100 } as const, (results) => {
     type Check = Extends<typeof results, {
         map?: Map<number, boolean>;
         name: string;

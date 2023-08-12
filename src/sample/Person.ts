@@ -7,7 +7,7 @@ export const personSchema = {
     type: "object",
     primaryKeys: ["name"],
     required: ["name", "age", "gender"],
-    indexes: ["age"],
+    indexes: ["age", "luckyNumbers"],
     properties: {
         type: {
             type: "string",
@@ -34,6 +34,10 @@ export const personSchema = {
         },
         gender: {
             enum: ["male", "female", "other"]
+        },
+        luckyNumbers: {
+            type: "array",
+            items: { type: "number" }
         },
         numbers: {
             type: "Int32Array",
@@ -83,6 +87,7 @@ type CompileTimeTypeCheck = Extends<PersonRequiredProperties, {
         y: number;
     };
     numbers: Int32Array,
+    luckyNumbers: number[],
     normalNumbers: number[],
     set: Set<string>,
     map: Map<number, boolean>,
@@ -95,6 +100,7 @@ type CompileTimeTypeCheck = Extends<PersonRequiredProperties, {
         y: number;
     };
     iq: number,
+    luckyNumbers: number[],
     numbers: Int32Array,
     normalNumbers: number[],
     set: Set<string>,
@@ -110,5 +116,6 @@ type CompileTimeTypeCheck = Extends<PersonRequiredProperties, {
 }> & Extends<{
     name: string;
     age: number;
+    luckyNumbers: number[];
 }, PersonIndexedProperties>;
 

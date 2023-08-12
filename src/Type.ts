@@ -28,4 +28,3 @@ export type PrimaryKeyProperties<D extends DataSchema> = Pick<BaseType<D>, Field
 export type IndexedProperties<D extends DataSchema> = Pick<BaseType<D>, FieldsInProperty<D, "indexes"> | FieldsInProperty<D, "primaryKeys">>;
 
 export type Type<D extends DataSchema> = Simplify<RequiredProperties<D> & OptionalProperties<D>>;
-export type Patch<D extends DataSchema> = PrimaryKeyProperties<D> & Partial<Type<D>>;

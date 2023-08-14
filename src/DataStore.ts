@@ -1,6 +1,4 @@
-import { DataSchema } from "./Schema.js";
-import { IndexedProperties, PrimaryKeyProperties } from "./Type.js";
-import { Type } from "./Type.js";
+import { Type, IndexedProperties, PrimaryKeyProperties, DataSchema } from "./DataSchema.js";
 import { personSchema } from "./sample/Person.js";
 import { todoSchema } from "./sample/Todo.js";
 import { DeepReadonly, Extends, Simplify, StringKeyof } from "./types.js";
@@ -53,11 +51,13 @@ export type Delete<S extends DataSchema> = PrimaryKeyProperties<S>;
 export type Patch<D extends DataSchema> = PrimaryKeyProperties<D> & Partial<Type<D>>;
 
 export interface DataStore<S extends DataSchema, T = Type<S>> {
+
     watch<P extends ReadonlyArray<keyof T>>(query: SelectQuery<S, T, P>, callback: (results: Result<T, P>[]) => void): Unwatch;
     watch(query: Query<S>, callback: (results: T[]) => void): Unwatch;
     create(document: Create<S>): void;
     patch(changes: Patch<S>): void;
     delete(document: Delete<S>): void;
+
 }
 
 let persons!: DataStore<typeof personSchema>;

@@ -1,6 +1,5 @@
-import { DataSchema } from "../Schema.js";
-import { IndexedProperties, OptionalProperties, PrimaryKeyProperties, RequiredProperties, Type } from "../Type.js";
-import { Extends } from "../types.js";
+import { IndexedProperties, OptionalProperties, PrimaryKeyProperties, RequiredProperties, Type, DataSchema } from "../DataSchema.js";
+import { Extends, Primitive } from "../types.js";
 
 export const personSchema = {
     id: "sample:Person",

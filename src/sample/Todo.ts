@@ -1,5 +1,4 @@
-import { DataSchema } from "../Schema.js";
-import { Type } from "../Type.js";
+import { DataSchema, Type } from "../DataSchema.js";
 
 export const todoSchema = {
     id: "sample:Todo",
